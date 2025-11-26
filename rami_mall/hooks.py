@@ -5,6 +5,62 @@ app_description = "Mall have everythings"
 app_email = "engramialqubaty@gmail.com"
 app_license = "mit"
 
+
+
+scheduler_events = {
+    "all": [
+        
+
+    ],
+    "hourly": [
+ 
+    ],
+    "daily": [
+        "rami_mall.scripts.offers_scheduler.execute",
+
+        
+    ],
+    "weekly": [
+        
+    ],
+    "monthly": [
+        
+    ]
+}
+
+
+doc_events = {
+    "Stock Entry": {
+        "after_insert": "rami_mall.scripts.stock_entry.update_bin_after_stock_entry",
+        "before_save": "rami_mall.scripts.stock_entry.prevent_edit",
+        "before_submit": "rami_mall.scripts.stock_entry.prevent_edit",
+        "before_delete": "rami_mall.scripts.stock_entry.prevent_delete"
+    },
+
+
+    "Order": {
+        "after_insert": "rami_mall.scripts.order.update_bin_after_order"
+    },
+
+    "Purchase invoce": {
+    "on_submit": "rami_mall.scripts.purchase_invoice.purchase_invoice_on_submit"
+     },
+
+
+    "Payment": {
+    "on_submit": "rami_mall.scripts.payment_combined.payment_on_submit"
+     },
+
+   
+
+
+    
+
+
+}
+
+
+
 # Apps
 # ------------------
 
